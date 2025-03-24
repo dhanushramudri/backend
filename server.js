@@ -23,6 +23,21 @@ const quizRoutes = require("./routes/quizRoutes");
 const progressRoutes = require("./routes/progressRoutes");
 const authRoutes = require("./routes/authRoutes"); // User authentication routes
 
+// Default Route (Backend Home Page)
+app.get("/", (req, res) => {
+  res.json({
+    message: "Welcome to the Training Platform API",
+    status: "Server is running",
+    availableRoutes: {
+      "/api/modules": "Get a list of available training modules",
+      "/api/quizzes": "Get a list of available quizzes",
+      "/api/progress": "Get user progress data",
+      "/api/auth": "User authentication endpoints",
+    },
+    version: "1.0.0",
+    documentation: "For more information, refer to the API documentation.",
+  });
+});
 // ✅ Use Routes
 app.use("/api/modules", moduleRoutes);
 app.use("/api/quizzes", quizRoutes);
